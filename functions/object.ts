@@ -1,6 +1,8 @@
 const { keys, values, entries } = Object;
 
-const map = (object, fn: Function) => {
+type mapFunc = (key: string, value: any) => any;
+
+const map = (object, fn: mapFunc) => {
   const updated = {};
 
   entries(object).forEach(([key, value]) => {
@@ -10,7 +12,9 @@ const map = (object, fn: Function) => {
   return updated;
 };
 
-const filter = (object, fn: Function) => {
+type filterFunc = (key: string, value: any) => boolean;
+
+const filter = (object, fn: filterFunc) => {
   const updated = {};
 
   entries(object).forEach(([key, value]) => {
@@ -22,7 +26,7 @@ const filter = (object, fn: Function) => {
   return updated;
 };
 
-const some = (object) => {
+const some = (object: Object) => {
   let result = false;
 
   values(object).forEach((value) => {
@@ -49,10 +53,10 @@ const every = (object) => {
 // export default { keys, values, map, filter, some, every };
 
 module.exports = {
-    keys,
-    values,
-    map,
-    filter,
-    some,
-    every
-}
+  keys,
+  values,
+  map,
+  filter,
+  some,
+  every,
+};
