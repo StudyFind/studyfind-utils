@@ -26,6 +26,10 @@ const emptyObject = {};
 //add your own object to test here.
 const customObj = {};
 
+//if you wish to test some and every then fill in the applicable value
+const expectedSomeResult = false; //does the customObj have any "truthy" values? yes => true//no => false
+const expectedEveryResult = false; //does the customObj have any "falsey" values or is it empty? yes => false//no => true
+
 //Keys test.
 //Keys returns an array of keys as Strings
 test("keys: Full object", () => {
@@ -149,17 +153,29 @@ test("some: Empty object", () => {
   expect(object.some(emptyObject)).toBe(false);
 });
 
+test("some: Customobj", () => {
+  expect(object.some(emptyObject)).toBe(expectedSomeResult);
+});
 //every testing
 //every checks if all values in the object are "truthy" and returns true only if all fields are "truthy".
-//returns true on an empty object bc of the functions layout. Not sure if this is intentional.
 test("every: Full object", () => {
   expect(object.every(fullObject)).toBe(true);
 });
 
 test("every: Partially full object", () => {
-  expect(object.every(partiallyFullObject)).toBe(true);
+  expect(object.every(partiallyFullObject)).toBe(false);
 });
 
 test("every: Empty object", () => {
-  expect(object.every(emptyObject)).toBe(true);
+  expect(object.every(emptyObject)).toBe(false);
+});
+
+test("every: Empty object", () => {
+  expect(
+    object.every({ a: false, b: 0, c: -0, d: null, e: NaN, f: undefined })
+  ).toBe(false);
+});
+
+test("every: customObj", () => {
+  expect(object.every(customObj)).toBe(expectedEveryResult);
 });

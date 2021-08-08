@@ -29,7 +29,7 @@ const filter = (object, fn: filterFunc) => {
 const some = (object: Object) => {
   let result = false;
 
-  values(object).forEach((value) => {
+  values(object).forEach((value, index) => {
     if (value) {
       result = true;
     }
@@ -41,9 +41,14 @@ const some = (object: Object) => {
 const every = (object) => {
   let result = true;
 
-  values(object).forEach((value) => {
-    if (!value) {
-      return false;
+  if (keys(object).length === 0) {
+    return false;
+  }
+
+  keys(object).forEach((key) => {
+    if (!object[key]) {
+      result = false;
+      return;
     }
   });
 
