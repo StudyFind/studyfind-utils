@@ -1,5 +1,11 @@
-// import object from "../functions/object";
 const object = require("../functions/object");
+
+//add your own object to test here.
+const customObj = {};
+
+//if you wish to test some and every then fill in the applicable value
+const expectedSomeResult = false; //does the customObj have any "truthy" values? yes => true//no => false
+const expectedEveryResult = false; //does the customObj have any "falsey" values or is it empty? yes => false//no => true
 
 const fullObject = {
   name: "Tom",
@@ -22,13 +28,6 @@ const partiallyFullObject = {
 };
 
 const emptyObject = {};
-
-//add your own object to test here.
-const customObj = {};
-
-//if you wish to test some and every then fill in the applicable value
-const expectedSomeResult = false; //does the customObj have any "truthy" values? yes => true//no => false
-const expectedEveryResult = false; //does the customObj have any "falsey" values or is it empty? yes => false//no => true
 
 //Keys test.
 //Keys returns an array of keys as Strings
