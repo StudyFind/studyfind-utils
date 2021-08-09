@@ -8,7 +8,7 @@ const inferType = (name: string) => {
 };
 
 const validate = {
-  all: (inputs: string[]) => {
+  all: (inputs: {email: string, password: string}) => {
     const errors = {};
 
     for (const i in inputs) {
@@ -32,10 +32,10 @@ const validate = {
   },
 
   password: (password: string) => {
+    if (!password) return " ";
     const checkCase = password !== password.toLowerCase();
     const checkSize = password.length > 7;
 
-    if (!password) return " ";
     if (!checkCase && !checkSize) return "Password must have 8 characters and one capital letter";
     if (!checkCase) return "Password must have a capital letter";
     if (!checkSize) return "Password must have 8 characters";
