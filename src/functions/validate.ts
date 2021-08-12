@@ -8,7 +8,7 @@ const inferType = (name: string) => {
 };
 
 const validate = {
-  all: (inputs: {email: string, password: string}) => {
+  all: (inputs: {[x: string]: string}) => {
     const errors = {};
 
     for (const i in inputs) {
