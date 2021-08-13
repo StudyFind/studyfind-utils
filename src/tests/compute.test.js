@@ -45,12 +45,6 @@ test("ELIGIBILITY | All exclusion and no", () => {
     expect(compute["eligibilityScore"](questions, responses)).toBe(100)
 })
 
-test("ELIGIBILITY | All exclusion and no", () => {
-    questions = [{type: "Exclusion"}, {type: "Exclusion"}, {type: "Exclusion"}]
-    responses = ["No", "No", "No"]
-    expect(compute["eligibilityScore"](questions, responses)).toBe(100)
-})
-
 test("ELIGIBILITY | 1 mismatch", () => {
     questions = [{type: "Exclusion"}, {type: "Exclusion"}, {type: "Exclusion"}, {type: "Inclusion"}]
     responses = ["No", "No", "No", "No"]
