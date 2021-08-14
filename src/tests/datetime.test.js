@@ -66,6 +66,28 @@ test("Check if getStandardDate() returns current timestamp as YYYY-MM-DD", () =>
   );
 });
 
+test("Check if getStandardDate() returns arbitrary timestamp as YYYY-MM-DD", () => {
+  expect(getStandardDate(1628976226160)).toBe("2021-08-14");
+});
+
+test("Check if getStandardDate() returns empty parameter as current YYYY-MM-DD", () => {
+  expect(getStandardDate()).toBe(new Date().toISOString().substring(0, 10));
+});
+
+test("Check if getStandardDate() returns undefined parameter as current YYYY-MM-DD", () => {
+  expect(getStandardDate(undefined)).toBe(
+    new Date().toISOString().substring(0, 10)
+  );
+});
+
+test("Check if getStandardDate() returns null parameter as invalid", () => {
+  expect(getStandardDate(null)).toBe("Invalid date");
+});
+
+test("Check if getStandardDate() returns random string as invalid", () => {
+  expect(getStandardDate("hello")).toBe("Invalid date");
+});
+
 test("Check if getFriendlyDate() returns 'Today'.", () => {
   expect(getFriendlyDate(Date.now())).toBe("Today");
 });
@@ -94,6 +116,18 @@ test("Check if getFriendlyDate() returns MMMM DD, YYYY for last week.", () => {
 
 test("Check if getFriendlyDate() returns MMMM DD, YYYY for arbitrary 02/29/1996.", () => {
   expect(getFriendlyDate(new Date(1996, 1, 29))).toBe("February 29, 1996");
+});
+
+test("Check if getFriendlyDate() returns empty parameter as Today.", () => {
+  expect(getFriendlyDate()).toBe("Today");
+});
+
+test("Check if getFriendlyDate() returns arbitrary negative double parameter in MMMM DD, YYYY.", () => {
+  expect(getFriendlyDate(-234.12)).toBe("December 31, 1969");
+});
+
+test("Check if getFriendlyDate() returns random string as invalid.", () => {
+  expect(getFriendlyDate("fewnoeiwf")).toBe("Invalid date");
 });
 
 test("Check if get12HourTime() returns current h:mma.", () => {
@@ -187,7 +221,7 @@ test("Check getRelativeTime() for 5 years.", () => {
   );
 });
 
-test("Check if getStandardTimezoneName() returns timezone abbreviation.", () => {
+test("Check if getStandardTimezoneName() returns current timezone abbreviation.", () => {
   expect(
     getStandardTimezoneName(Intl.DateTimeFormat().resolvedOptions().timeZone)
   ).toBe(
@@ -195,6 +229,22 @@ test("Check if getStandardTimezoneName() returns timezone abbreviation.", () => 
       .toLocaleTimeString("default", { timeZoneName: "short" })
       .split(" ")[2]
   );
+});
+
+test("Check if getStandardTimezoneName() returns wrong timezone name format as UTC.", () => {
+  expect(getStandardTimezoneName("Atlantic Standard Time")).toBe("UTC");
+});
+
+test("Check if getStandardTimezoneName() returns empty parameter as UTC.", () => {
+  expect(getStandardTimezoneName()).toBe("UTC");
+});
+
+test("Check if getStandardTimezoneName() returns arbitrary timezone name as abbreviation.", () => {
+  expect(getStandardTimezoneName("Asia/Magadan")).toBe("+11");
+});
+
+test("Check if getStandardTimezoneName() returns arbitrary timezone name as abbreviation.", () => {
+  expect(getStandardTimezoneName("Europe/Budapest")).toBe("CEST");
 });
 
 test("Check if getTimestampFromDatetime() returns current UTC timestamp within a minute.", () => {
@@ -206,6 +256,13 @@ test("Check if getTimestampFromDatetime() returns current UTC timestamp within a
   });
   expect(getTimestampFromDatetime(date, time24)).toBeWithinDeviation(
     new Date().getTime(),
+    60 * 1000
+  );
+});
+
+test("Check if getTimestampFromDatetime() returns arbitrary UTC timestamp within a minute.", () => {
+  expect(getTimestampFromDatetime("2021-08-14", "17:44")).toBeWithinDeviation(
+    1628977444662,
     60 * 1000
   );
 });
