@@ -1,8 +1,31 @@
 const compute = require("../functions/compute")
 
+const testText = require("../testText")
+
 responses = ["Yes", "Yes", "Yes"]
 
 questions = [{type: "Inclusion"}, {type: "Inclusion"}, {type: "Inclusion"}]
+
+expect.extend({
+    toBeWithinRange(received, floor, ceiling) {
+      const pass = received >= floor && received <= ceiling;
+      if (pass) {
+        return {
+          message: () =>
+            `expected ${received} not to be within range ${floor} - ${ceiling}`,
+          pass: true,
+        };
+      } else {
+        return {
+          message: () =>
+            `expected ${received} to be within range ${floor} - ${ceiling}`,
+          pass: false,
+        };
+      }
+    },
+});
+
+//TESTS FOR ELIGIBILITY SCORE
 
 test("ELIGIBILITY | Nothing", () => {
     expect(compute["eligibilityScore"]()).toBe(0)
@@ -55,4 +78,25 @@ test("ELIGIBILITY | 2 mismatch", () => {
     questions = [{type: "Exclusion"}, {type: "Exclusion"}, {type: "Inclusion"}, {type: "Inclusion"}]
     responses = ["No", "No", "No", "No"]
     expect(compute["eligibilityScore"](questions, responses)).toBe(50)
+})
+
+/*
+TESTS FOR READABILITY INDEX
+FOR SOME REASON DIFFERENT TESTERS ONLINE RETURN DIFFERENT RESULTS (MIGHT HAVE TO DO WITH BIAS)
+https://charactercalculator.com/flesch-reading-ease/
+https://readabilityformulas.com/freetests/six-readability-formulas.php
+https://www.textcompare.org/readability/flesch-kincaid-reading-ease/
+HOWEVER THEY ARE ALL WITHIN A COUPLE POINTS OF EACHOTHER SO I BELIEVE USING toBeWithinRange IS SUFFICIENT
+*/
+
+test("READABILITY | Nothing", () => {
+    expect(compute["readabilityIndex"]()).toBe(null)
+})
+
+test("READABILITY | Empty", () => {
+    expect(compute["readabilityIndex"]("")).toBe(null)
+})
+
+test("READABILITY | Essay", () => {
+    expect(compute["readabilityIndex"](testText.essay)).toBeWithinRange(60, 70)
 })

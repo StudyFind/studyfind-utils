@@ -1,38 +1,47 @@
-// import "flesch";
-// import "syllable";
-// THESE IMPORTS CAUSE PROBLEMS WITH JEST
+import { flesch } from "flesch";
+import { syllable } from "syllable"
+/*
+TO FIX IMPORTS:
+CHANGE FLESCH EXPORT TO: module.exports = { flesch: flesch }
+CHANGE SYLLABLE EXPORT TO: module.exports = { syllable: syllable }
+CHANGE IMPORTS WITHIN SYLLABLE INDEX FILE TO: var pluralize = require('pluralize')
+                                              var normalize = require('normalize-strings')
+                                              var problematic = require('./problematic')
+CHANGE PROBLEMATIC EXPORT TO: module.exports = problematic
+THIS MAY ONLY BE NECESSARY WHEN MERGING SINCE NODE_MODULES IS GITIGNORED
+*/
 
 const compute = {
-  // readabilityIndex: (text) => {
-  //   // https://en.wikipedia.org/wiki/Automated_readability_index
-  //   // https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests#Flesch%E2%80%93Kincaid_grade_level
+  readabilityIndex: (text) => {
+    // https://en.wikipedia.org/wiki/Automated_readability_index
+    // https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests#Flesch%E2%80%93Kincaid_grade_level
 
-  //   if (!text) {
-  //     return null;
-  //   }
+    if (!text) {
+      return null;
+    }
 
-  //   const wordList = text
-  //     .toLowerCase()
-  //     .replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, " ") // removes all punctuation
-  //     .split(/\s/) // splits text at newlines and spaces
-  //     .map((word) => word.trim()) // removes whitespace from each word
-  //     .filter((word) => word); // removes empty strings
+    const wordList = text
+      .toLowerCase()
+      .replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, " ") // removes all punctuation
+      .split(/\s/) // splits text at newlines and spaces
+      .map((word) => word.trim()) // removes whitespace from each word
+      .filter((word) => word); // removes empty strings
 
-  //   const syllablesList = wordList.map((word) => syllable.syllable(word));
+    const syllablesList = wordList.map((word) => syllable(word));
 
-  //   const numSentences = text.split(".").length;
-  //   const numWords = wordList.length;
-  //   const numSyllables = numWords ? syllablesList.reduce((a, b) => a + b) : 0;
+    const numSentences = text.split(".").length;
+    const numWords = wordList.length;
+    const numSyllables = numWords ? syllablesList.reduce((a, b) => a + b) : 0;
 
-  //   const BIAS = 20;
+    const BIAS = 20;
 
-  //   let score = BIAS + flesch.flesch({ sentence: numSentences, word: numWords, syllable: numSyllables });
+    let score = BIAS + flesch({ sentence: numSentences, word: numWords, syllable: numSyllables });
 
-  //   score = Math.min(score, 100);
-  //   score = Math.max(score, 0);
+    score = Math.min(score, 100);
+    score = Math.max(score, 0);
 
-  //   return Math.round(score);
-  // },
+    return Math.round(score);
+  },
 
   eligibilityScore: (questions: {[x: string]: any, type: string}, responses: string[]) => {
     /*
