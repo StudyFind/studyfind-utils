@@ -12,7 +12,7 @@ THIS MAY ONLY BE NECESSARY WHEN MERGING SINCE NODE_MODULES IS GITIGNORED
 */
 
 const compute = {
-  readabilityIndex: (text) => {
+  readabilityIndex: (text: string) => {
     // https://en.wikipedia.org/wiki/Automated_readability_index
     // https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests#Flesch%E2%80%93Kincaid_grade_level
 
