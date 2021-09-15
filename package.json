@@ -1,21 +1,23 @@
 {
-  "name": "studyfind-utils",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@studyfind/utils",
+  "version": "0.5.2",
+  "private": false,
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc -p .",
+    "prepublishOnly": "yarn build"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.14.5",
     "@testing-library/react": "^12.0.0",
     "@types/jest": "^26.0.24",
+    "@types/syllable": "^5.0.2",
+    "@types/validator": "^13.6.3",
+    "flesch": "^2.0.0",
     "jest": "^27.0.6",
-    "ts-jest": "^27.0.4",
-    "typescript": "^4.3.5"
-  },
-  "dependencies": {
-    "moment": "^2.29.1",
     "moment-timezone": "^0.5.31",
+    "ts-jest": "^27.0.4",
+    "typescript": "^4.3.5",
     "validator": "^13.6.0"
   }
 }
