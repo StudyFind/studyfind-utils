@@ -1,11 +1,21 @@
 {
   "name": "@studyfind/utils",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "private": false,
+  "repository": "https://github.com/YohanJhaveri/studyfind-components.git",
+  "author": "Yohan Jhaveri <yohanjhaveri@gmail.com>",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "lib/index.esm.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "test": "jest",
     "build": "tsc -p .",
     "prepublishOnly": "yarn build"
+  },
+  "np": {
+    "publish": false,
+    "tests": false
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.14.5",
@@ -19,5 +29,8 @@
     "ts-jest": "^27.0.4",
     "typescript": "^4.3.5",
     "validator": "^13.6.0"
+  },
+  "peerDependencies": {
+    "moment-timezone": "^0.5.31"
   }
 }
