@@ -111,4 +111,4 @@ const compute = {
   },
 };
 
-module.exports = compute;
+export default compute;

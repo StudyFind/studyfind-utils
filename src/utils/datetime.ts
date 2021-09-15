@@ -1,5 +1,4 @@
-import * as moment from "moment";
-import "moment-timezone";
+import moment from "moment-timezone";
 
 /*
 ==============================================================================
