@@ -1,6 +1,6 @@
 {
   "name": "@studyfind/utils",
-  "version": "0.5.8",
+  "version": "0.5.9",
   "private": false,
   "repository": "https://github.com/YohanJhaveri/studyfind-components.git",
   "author": "Yohan Jhaveri <yohanjhaveri@gmail.com>",
@@ -24,11 +24,13 @@
     "@types/jest": "^26.0.24",
     "@types/syllable": "^5.0.2",
     "@types/validator": "^13.6.3",
-    "flesch": "^2.0.0",
     "jest": "^27.0.6",
-    "moment-timezone": "^0.5.31",
     "ts-jest": "^27.0.4",
-    "typescript": "^4.3.5",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "flesch": "^2.0.0",
+    "moment-timezone": "^0.5.31",
     "validator": "^13.6.0"
   },
   "peerDependencies": {
