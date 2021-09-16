@@ -21,27 +21,27 @@ const getNow = () => {
   return moment().valueOf();
 };
 
-const getNowUTC = (): number => {
+const getNowUTC = () => {
   return moment().utc().valueOf();
 };
 
-const getToday = (): string => {
+const getToday = () => {
   return moment().format("YYYY-MM-DD");
 };
 
-const getYesterday = (): string => {
+const getYesterday = () => {
   return moment().add(-1, "days").format("YYYY-MM-DD");
 };
 
-const getTomorrow = (): string => {
+const getTomorrow = () => {
   return moment().add(1, "days").format("YYYY-MM-DD");
 };
 
-const getStandardDate = (timestamp: number): string => {
+const getStandardDate = (timestamp: number) => {
   return moment(timestamp).format("YYYY-MM-DD");
 };
 
-const getFriendlyDate = (timestamp: number): string => {
+const getFriendlyDate = (timestamp: number) => {
   const standardDate = getStandardDate(timestamp);
 
   const today = getToday();
@@ -55,23 +55,23 @@ const getFriendlyDate = (timestamp: number): string => {
   return moment(timestamp).format("MMMM DD, YYYY");
 };
 
-const get12HourTime = (timestamp: number): string => {
+const get12HourTime = (timestamp: number) => {
   return moment(timestamp).format("h:mma");
 };
 
-const get24HourTime = (timestamp: number): string => {
+const get24HourTime = (timestamp: number) => {
   return moment(timestamp).format("HH:mm");
 };
 
-const getRelativeTime = (timestamp: number): string => {
+const getRelativeTime = (timestamp: number) => {
   return moment(timestamp).fromNow();
 };
 
-const getStandardTimezoneName = (timezone: string): string => {
+const getStandardTimezoneName = (timezone: string) => {
   return moment.tz(timezone).zoneAbbr();
 };
 
-const getTimestampFromDatetime = (time: string, date: string): number => {
+const getTimestampFromDatetime = (time: string, date: string) => {
   return moment(`${date} ${time}`).utc().valueOf();
 };
 
