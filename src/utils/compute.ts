@@ -1,5 +1,5 @@
 import { flesch } from "flesch";
-import { syllable } from "syllable"
+import { syllable } from "syllable";
 /*
 TO FIX IMPORTS:
 CHANGE FLESCH EXPORT TO: module.exports = { flesch: flesch }

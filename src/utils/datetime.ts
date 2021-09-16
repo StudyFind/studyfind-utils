@@ -17,7 +17,7 @@ date => YYYY-MM-DD format                    Example: "2021-04-30"
 ==============================================================================
 */
 
-const getNow = (): number => {
+const getNow = () => {
   return moment().valueOf();
 };
 
