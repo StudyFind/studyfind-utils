@@ -1,6 +1,6 @@
 {
   "name": "@studyfind/utils",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "private": false,
   "repository": "https://github.com/YohanJhaveri/studyfind-components.git",
   "author": "Yohan Jhaveri <yohanjhaveri@gmail.com>",
@@ -8,6 +8,7 @@
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",
+  "type": "module",
   "scripts": {
     "test": "jest",
     "build": "tsc -p .",
