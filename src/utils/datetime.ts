@@ -75,7 +75,7 @@ const getTimestampFromDatetime = (time: string, date: string): number => {
   return moment(`${date} ${time}`).utc().valueOf();
 };
 
-module.exports = {
+export default {
   getNow,
   getNowUTC,
   getToday,

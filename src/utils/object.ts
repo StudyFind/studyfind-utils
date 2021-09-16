@@ -57,7 +57,7 @@ const every = (object) => {
 
 // export default { keys, values, map, filter, some, every };
 
-module.exports = {
+export default {
   keys,
   values,
   map,

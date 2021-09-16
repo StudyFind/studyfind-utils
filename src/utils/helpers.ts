@@ -53,7 +53,7 @@ const convertOffsetsToWeekdaysAndTimes = (
   return [weekdays, times];
 };
 
-module.exports = {
+export default {
   convertWeekdaysAndTimesToOffsets,
   convertOffsetsToWeekdaysAndTimes,
 };
