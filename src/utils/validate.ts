@@ -56,4 +56,4 @@ const time = (value: string) => {
   return "";
 };
 
-export default { email, password, url, date, time };
+export default { name, email, password, url, date, time };
